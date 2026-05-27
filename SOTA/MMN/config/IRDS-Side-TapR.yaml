@@ -1,0 +1,23 @@
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+  - name: IRDS-Side-TapR
+    data_path: ./data/Finetune/data_and_label_IRDS-Side-TapR.pkl
+    data_length: 64
+    partition: True
+
+# model
+model: model.MMN.MMN_
+model_args:
+  in_channels: 3
+  num_classes: 2
+  num_points: 17
+  num_people: 1
+  kernel_size: 3
+  num_heads: 4
+  head_drop: 0.1
+  drop_path: 0.3
+  mlp_ratio: 2.0
+  index_t: True
+
+
