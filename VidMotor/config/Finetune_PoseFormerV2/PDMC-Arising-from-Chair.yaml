@@ -1,0 +1,53 @@
+# feeder
+feeder: feeder.feeder_PoseFormerV2.Feeder
+train_feeder_args:
+  - name: centers-Arising-from-Chair
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-train.pkl
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+test_feeder_args:
+  - name: center1-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-test.pkl
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+  - name: center2-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center2-Arising-from-Chair-test.pkl
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+  - name: center3-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center3-Arising-from-Chair-test.pkl
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+  - name: center4-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center4-Arising-from-Chair-test.pkl
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+
+scale_range_train: [ 1, 3 ]
+scale_range_test: [ 2, 2 ]
+# model
+model: net.PoseFormerV2.Model_finetune
+model_args:
+  in_channels: 3
+  num_class: 5
+  num_joints: 17
+  embed_dim_ratio: 32
+  depth: 4
+  num_heads: 8
+  number_of_kept_frames: 27
+  number_of_kept_coeffs: 27
+  drop_path_rate: 0.1
+  classifier_dropout: 0.5
+  classifier_hidden_dims: 2048
+model_nc: net.PoseFormerV2.NonCausalHead
+model_nc_args:
+  num_class: 5
+  num_joints: 17
+  embed_dim_ratio: 32
+  classifier_dropout: 0.5
+  classifier_hidden_dims: 2048

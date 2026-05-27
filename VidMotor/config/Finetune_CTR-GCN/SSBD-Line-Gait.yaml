@@ -1,0 +1,21 @@
+# feeder
+feeder: feeder.feeder_CTRGCN.Feeder
+test_feeder_args:
+  - name: SSBD-Line-Gait
+    data_path: ./data/Finetune/data_and_label_SSBD-Line-Gait.pkl
+    data_length: 64
+    partition: False
+
+# model
+model: net.CTR_GCN.CausalCTRGCN
+model_args:
+  in_channels: 3
+  num_class: 2
+  num_point: 17
+  num_person: 1
+  graph_args:
+    layout: human36M
+    strategy: spatial
+model_nc: net.CTR_GCN.NonCausalHead
+model_nc_args:
+  num_class: 2

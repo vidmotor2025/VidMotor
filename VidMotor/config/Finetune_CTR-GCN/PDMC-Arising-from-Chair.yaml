@@ -1,0 +1,39 @@
+# feeder
+feeder: feeder.feeder_CTRGCN.Feeder
+train_feeder_args:
+  - name: centers-Arising-from-Chair
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-train.pkl
+    data_length: 64
+    partition: False
+test_feeder_args:
+  - name: center1-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: False
+  - name: center2-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center2-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: False
+  - name: center3-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center3-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: False
+  - name: center4-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center4-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: False
+
+
+# model
+model: net.CTR_GCN.CausalCTRGCN
+model_args:
+  in_channels: 3
+  num_class: 5
+  num_point: 17
+  num_person: 1
+  graph_args:
+    layout: human36M
+    strategy: spatial
+model_nc: net.CTR_GCN.NonCausalHead
+model_nc_args:
+  num_class: 5

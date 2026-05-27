@@ -1,0 +1,32 @@
+# feeder
+feeder: feeder.feeder_PoseFormerV2.Feeder
+test_feeder_args:
+  - name: SPHERE-Surface-Gait
+    data_path: ./data/Finetune/data_and_label_SPHERE-Surface-Gait.pkl
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+
+scale_range_train: [ 1, 3 ]
+scale_range_test: [ 2, 2 ]
+# model
+model: net.PoseFormerV2.Model_finetune
+model_args:
+  in_channels: 3
+  num_class: 3
+  num_joints: 17
+  embed_dim_ratio: 32
+  depth: 4
+  num_heads: 8
+  number_of_kept_frames: 27
+  number_of_kept_coeffs: 27
+  drop_path_rate: 0.1
+  classifier_dropout: 0.5
+  classifier_hidden_dims: 2048
+model_nc: net.PoseFormerV2.NonCausalHead
+model_nc_args:
+  num_class: 3
+  num_joints: 17
+  embed_dim_ratio: 32
+  classifier_dropout: 0.5
+  classifier_hidden_dims: 2048
