@@ -1,0 +1,22 @@
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+  - name: IRDS-Shoulder-AbductionL
+    data_path: ./data/Finetune/data_and_label_IRDS-Shoulder-AbductionL.pkl
+    data_length: 64
+    partition: False
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  in_channels: 3
+  num_class: 2
+  num_frame: 64
+  num_person: 1
+  num_point: 17
+  graph: model.graph_utils.human36m.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+
+cl_version: 'V0'
+cl_mode: 'ST-Multi-Level'

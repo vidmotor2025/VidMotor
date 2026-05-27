@@ -1,0 +1,37 @@
+# feeder
+feeder: feeder.feeder.Feeder
+train_feeder_args:
+  - name: centers-Arising-from-Chair
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-train.pkl
+    data_length: 64
+    partition: False
+test_feeder_args:
+  - name: center1-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: False
+  - name: center2-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center2-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: False
+  - name: center3-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center3-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: False
+  - name: center4-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center4-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: False
+
+
+# model
+model: model.HDGCN.Model
+model_args:
+  in_channels: 3
+  num_class: 5
+  num_joints: 17
+  graph: model.graph.human36m_hierarchy.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+    CoM: 8
+

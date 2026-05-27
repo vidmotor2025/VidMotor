@@ -1,0 +1,19 @@
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+  - name: SSBD-Line-Gait
+    data_path: ./data/Finetune/data_and_label_SSBD-Line-Gait.pkl
+    data_length: 64
+    partition: False
+
+# model
+model: model.HDGCN.Model
+model_args:
+  in_channels: 3
+  num_class: 2
+  num_joints: 17
+  graph: model.graph.human36m_hierarchy.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+    CoM: 8
+
