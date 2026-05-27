@@ -1,0 +1,24 @@
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+  - name: PD-Walkway-Gait
+    data_path: ./data/Finetune/data_and_label_PD-Walkway-Gait.pkl
+    data_length: 100
+
+# model
+model: model.skelet_gcn.SkeleT_GCN
+model_args:
+  num_class: 3
+  init_graph_cfg:
+    layout: human36m
+    mode: skelet_spatial
+  in_channels: 3
+  pooling_stages: []
+  pooling_joints: []
+  num_person: 1
+  same_transformation: False
+  same_transformation_importance: False
+  M_adaptive: init
+  gcn_type: unit_gcn
+  tcn_type: mstcn
+  gcn_adaptive: init
