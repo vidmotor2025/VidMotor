@@ -1,0 +1,21 @@
+# feeder
+feeder: feeder.feeder_STGCN.Feeder
+test_feeder_args:
+  - name: Walking-Treadmill-Gait
+    data_path: ./data/Finetune/data_and_label_Walking-Treadmill-Gait.pkl
+    time_process:
+      overlength: None
+      underlength: None
+
+# model
+model: net.ST_GCN.CausalModel
+model_args:
+  in_channels: 3
+  num_class: 9
+  graph_args:
+    layout: human36M
+    strategy: uniform
+model_nc: net.ST_GCN.NonCausalHead
+model_nc_args:
+  num_class: 9
+

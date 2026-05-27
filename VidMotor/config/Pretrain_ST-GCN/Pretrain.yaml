@@ -1,0 +1,133 @@
+# feeder
+feeder: feeder.feeder_STGCN.PretrainFeeder
+train_feeder_args:
+  - name: UMONS-TAICHI
+    data_path: ./data/Pretrain/data_and_label_UMONS-TAICHI.pkl
+    data_length: 270
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 0
+      max: 10
+    score_trend: True
+    data_sampler: feeder.BatchSampler.SubjectBatchSampler
+    batch_size: 1
+  - name: MMFS
+    data_path: ./data/Pretrain/data_and_label_MMFS.pkl
+    data_length: 350
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 0
+      max: 17.3
+    score_trend: True
+    data_sampler: feeder.BatchSampler.SubjectBatchSampler
+    batch_size: 32
+  - name: Rhythmic-Gymnastics
+    data_path: ./data/Pretrain/data_and_label_Rhythmic-Gymnastics.pkl
+    data_length: 2310
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 3.85
+      max: 24
+    score_trend: True
+    data_sampler: SequentialSampler
+    batch_size: 32
+  - name: AGF-Olympics
+    data_path: ./data/Pretrain/data_and_label_AGF-Olympics.pkl
+    data_length: 3500
+    time_process:
+      overlength: None
+      underlength: None
+    score_range:
+      min: 10.966
+      max: 16.2
+    score_trend: True
+    data_sampler: SequentialSampler
+    batch_size: 32
+  - name: FineFS
+    data_path: ./data/Pretrain/data_and_label_FineFS.pkl
+    data_length: 345
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 0
+      max: 21.21
+    score_trend: True
+    data_sampler: feeder.BatchSampler.SubjectBatchSampler
+    batch_size: 32
+  - name: UI-PRMD
+    data_path: ./data/Pretrain/data_and_label_UI-PRMD.pkl
+    data_length: 80
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 0
+      max: 1
+    score_trend: True
+    data_sampler: feeder.BatchSampler.SubjectBatchSampler
+    batch_size: 8
+  - name: KIMORE
+    data_path: ./data/Pretrain/data_and_label_KIMORE.pkl
+    data_length: 85
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 0
+      max: 50
+    score_trend: True
+    data_sampler: feeder.BatchSampler.SubjectBatchSampler
+    batch_size: 16
+  - name: Push-Up
+    data_path: ./data/Pretrain/data_and_label_Push-Up.pkl
+    data_length: 50
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 0
+      max: 1
+    score_trend: False
+    data_sampler: SequentialSampler
+    batch_size: 32
+  - name: 3D-Yoga
+    data_path: ./data/Pretrain/data_and_label_3D-Yoga.pkl
+    data_length: 5
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 0
+      max: 3
+    score_trend: True
+    data_sampler: feeder.BatchSampler.SubjectBatchSampler
+    batch_size: 8
+  - name: FMS
+    data_path: ./data/Pretrain/data_and_label_FMS.pkl
+    data_length: 145
+    time_process:
+      overlength: downsampling_uniform_offset
+      underlength: upsampling_fill_zero
+    score_range:
+      min: 0
+      max: 3
+    score_trend: True
+    data_sampler: feeder.BatchSampler.SubjectBatchSampler
+    batch_size: 8
+
+# model
+model: net.ST_GCN.BaseModel
+model_args:
+  in_channels: 3
+  num_class: 1
+  graph_args:
+    layout: human36M
+    strategy: uniform
+  sigmoid: True
