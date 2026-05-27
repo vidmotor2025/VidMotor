@@ -1,0 +1,46 @@
+# feeder
+feeder: feeder.feeder.Feeder
+train_feeder_args:
+  - name: centers-Arising-from-Chair
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-train.pkl
+    data_length: 64
+    partition: True
+test_feeder_args:
+  - name: center1-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: True
+  - name: center2-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center2-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: True
+  - name: center3-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center3-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: True
+  - name: center4-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center4-Arising-from-Chair-test.pkl
+    data_length: 64
+    partition: True
+
+# model
+model: model.SkateFormer.SkateFormer_
+model_args:
+  in_channels: 3
+  num_class: 5
+  num_points: 16
+  num_people: 1
+  kernel_size: 7
+  num_heads: 32
+  attn_drop: 0.5
+  head_drop: 0.0
+  rel: True
+  drop_path: 0.2
+  type_1_size: [ 4, 4 ]
+  type_2_size: [ 4, 8 ]
+  type_3_size: [ 4, 4 ]
+  type_4_size: [ 4, 8 ]
+  mlp_ratio: 4.0
+  index_t: True
+
+

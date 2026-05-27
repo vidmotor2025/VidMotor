@@ -1,0 +1,29 @@
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+  - name: IRDS-Side-TapL
+    data_path: ./data/Finetune/data_and_label_IRDS-Side-TapL.pkl
+    data_length: 64
+    partition: True
+
+# model
+model: model.SkateFormer.SkateFormer_
+model_args:
+  in_channels: 3
+  num_class: 2
+  num_points: 16
+  num_people: 1
+  kernel_size: 7
+  num_heads: 32
+  attn_drop: 0.5
+  head_drop: 0.0
+  rel: True
+  drop_path: 0.2
+  type_1_size: [ 4, 4 ]
+  type_2_size: [ 4, 8 ]
+  type_3_size: [ 4, 4 ]
+  type_4_size: [ 4, 8 ]
+  mlp_ratio: 4.0
+  index_t: True
+
+
