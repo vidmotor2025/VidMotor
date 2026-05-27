@@ -1,0 +1,34 @@
+# feeder
+feeder: feeder.feeder.Feeder
+train_feeder_args:
+  - name: centers-Arising-from-Chair
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-train.pkl
+    data_length: 100
+test_feeder_args:
+  - name: center1-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center1-Arising-from-Chair-test.pkl
+    data_length: 100
+  - name: center2-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center2-Arising-from-Chair-test.pkl
+    data_length: 100
+  - name: center3-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center3-Arising-from-Chair-test.pkl
+    data_length: 100
+  - name: center4-Arising-from-Chair-test
+    data_path: ./data/Finetune_multicenter/data_and_label_center4-Arising-from-Chair-test.pkl
+    data_length: 100
+
+
+# model
+model: model.protogcn.ProtoGCN
+model_args:
+  num_class: 5
+  graph_cfg:
+    layout: human36m
+    mode: random
+    num_filter: 8
+    init_off: 0.04
+    init_std: 0.02
+  num_prototype: 400
+  in_channels: 3
+  num_person: 1

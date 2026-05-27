@@ -1,0 +1,20 @@
+# feeder
+feeder: feeder.feeder.Feeder
+test_feeder_args:
+  - name: EHE-Waist-BendL
+    data_path: ./data/Finetune/data_and_label_EHE-Waist-BendL.pkl
+    data_length: 100
+
+# model
+model: model.protogcn.ProtoGCN
+model_args:
+  num_class: 2
+  graph_cfg:
+    layout: human36m
+    mode: random
+    num_filter: 8
+    init_off: 0.04
+    init_std: 0.02
+  num_prototype: 400
+  in_channels: 3
+  num_person: 1
