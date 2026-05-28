@@ -23,7 +23,7 @@ The authors' institution preserves the copyright and all legal rights of these c
   - [3) SkateFormer](#3-skateformer)
   - [4) DSTformer](#4-dstformer)
 - [Comparative Approaches](#comparative-approaches)
-  - [1) SkateFormer](#1-skateformer-1)
+  - [1) SkateFormer](#1-skateformer)
   - [2) HD-GCN](#2-hd-gcn)
   - [3) FR-Head](#3-fr-head)
   - [4) MotionBERT](#4-motionbert)
